@@ -8,9 +8,12 @@ I have built a .Net Core Console app for the test.
 
 *	Dependency Injection
 	*	.Net Core dependency injection
-*	.Net Core **xUnit** unit tests. Using **NSubstitute** for mocking.
-	*	Business logic tests
-	*	Repository tests
+*	Unit tests
+	*	.Net Core **xUnit** unit tests
+	*	**NSubstitute** for mocking
+	*	The testing areas are
+		*	Business logic tests
+		*	Repository tests
 
 ### The solution
 	
