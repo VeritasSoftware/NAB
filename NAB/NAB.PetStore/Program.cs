@@ -78,6 +78,8 @@ namespace NAB.PetStore
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.WriteLine(Environment.NewLine);
+
                 Print();
             }
         }
