@@ -1,9 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using NAB.PetStore.Repository;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace NAB.PetStore
 {
@@ -11,6 +9,10 @@ namespace NAB.PetStore
     {
         static IServiceProvider serviceProvider;
 
+        /// <summary>
+        /// Add dependency injection
+        /// </summary>
+        /// <returns></returns>
         private static IServiceProvider AddDependencyInjection()
         {
             var services = new ServiceCollection();
@@ -21,6 +23,9 @@ namespace NAB.PetStore
                     
         }
 
+        /// <summary>
+        /// Print
+        /// </summary>
         static void Print()
         {
             Console.WriteLine("Select pet type: 1-Dog, 2-Cat, 3-Fish\r\nAny other key to quit..");

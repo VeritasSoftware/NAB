@@ -10,8 +10,12 @@ namespace NAB.PetStore.Repository
     /// </summary>
     public class PetStoreRepository : IPetStoreRepository
     {
-        public string Path { get; set; }       
+        public string Path { get; set; }
 
+        /// <summary>
+        /// Get pet store async - reads the input file and deserializes json to object
+        /// </summary>
+        /// <returns><see cref="Task{Person[]}"/></returns>
         public async Task<Person[]> GetPetStoreAsync()
         {
             if (string.IsNullOrEmpty(this.Path))
