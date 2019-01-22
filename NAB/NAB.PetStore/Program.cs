@@ -64,6 +64,7 @@ namespace NAB.PetStore
                 Console.WriteLine(GetRepeatedString("*", 34));
                 Console.WriteLine($"{GetRepeatedString("*", 5)}     NAB Pet Store!     {GetRepeatedString("*", 5)}");
                 Console.WriteLine(GetRepeatedString("*", 34));
+                Console.WriteLine(Environment.NewLine);
 
                 serviceProvider = AddDependencyInjection();
 
