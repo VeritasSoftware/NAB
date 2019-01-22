@@ -7,6 +7,7 @@ I have built a .Net Core Console app for the test.
 ### Features
 
 *	Dependency Injection
+	*	.Net Core dependency injection
 *	.Net Core **xUnit** unit tests. Using **NSubstitute** for mocking.
 	*	Business logic tests
 	*	Repository tests
