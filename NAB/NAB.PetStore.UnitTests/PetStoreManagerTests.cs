@@ -6,6 +6,9 @@ using Xunit;
 
 namespace NAB.PetStore.UnitTests
 {
+    /// <summary>
+    /// class PetStoreManagerTests - Business logic tests
+    /// </summary>
     public class PetStoreManagerTests
     {
         private async Task<Person[]> GetPetStoreAsync()
