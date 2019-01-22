@@ -6,9 +6,9 @@ I have built a .Net Core Console app for the test.
 
 ### Features
 
-*	Dependency Injection
+*	**Dependency Injection**
 	*	.Net Core dependency injection
-*	Unit tests
+*	**Unit tests**
 	*	.Net Core **xUnit** unit tests
 	*	**NSubstitute** for mocking
 	*	The testing areas are
