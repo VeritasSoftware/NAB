@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NAB.PetStore.Repository.Interfaces
 {
-    public interface IPetsStoreManager
+    public interface IPetStoreManager
     {
 
     }
