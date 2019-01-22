@@ -39,7 +39,8 @@ namespace NAB.PetStore.Repository
                                              .Select(g => new PetsByPersonGender
                                              {
                                                  Gender = g.Key,
-                                                 Pets = g.SelectMany(person => person.Pets.Where(pet => pet.Type == petType)).OrderBy(x => x.Name)
+                                                 Pets = g.SelectMany(person => person.Pets.Where(pet => pet.Type == petType))
+                                                                                          .OrderBy(x => x.Name)
                                              })
                                              .ToList()
             };
