@@ -28,33 +28,42 @@ namespace NAB.PetStore
         /// </summary>
         static void Print()
         {
-            Console.WriteLine("Select pet type: 1-Dog, 2-Cat, 3-Fish\r\nAny other key to quit..");
-
-            var input = Console.ReadKey();
-
-            if (input.Key != ConsoleKey.D1 && input.Key != ConsoleKey.D2 && input.Key != ConsoleKey.D3)
+            try
             {
-                return;
+                Console.WriteLine("Select pet type: 1-Dog, 2-Cat, 3-Fish\r\nAny other key to quit..");
+
+                var input = Console.ReadKey();
+
+                if (input.Key != ConsoleKey.D1 && input.Key != ConsoleKey.D2 && input.Key != ConsoleKey.D3)
+                {
+                    return;
+                }
+
+                Console.WriteLine(Environment.NewLine);
+
+                var petType = (PetType)Enum.Parse(typeof(PetType), new string(new char[] { input.KeyChar }));
+
+                var petStoreManager = serviceProvider.GetRequiredService<IPetStoreManager>();
+
+                var results = petStoreManager.GetPetsByPersonGender(petType).Result;
+
+                results?.PetsByPersonGender.ToList().ForEach(x =>
+                {
+                    Console.WriteLine(x.Gender.ToString());
+
+                    x.Pets.ToList().ForEach(p => Console.WriteLine($"\t{p.Name}"));
+                });
+
+                Console.WriteLine(Environment.NewLine);
+
+                Print();
             }
-
-            Console.WriteLine(Environment.NewLine);
-
-            var petType = (PetType)Enum.Parse(typeof(PetType), new string(new char[] { input.KeyChar }));            
-
-            var petStoreManager = serviceProvider.GetRequiredService<IPetStoreManager>();
-
-            var results = petStoreManager.GetPetsByPersonGender(petType).Result;
-
-            results?.PetsByPersonGender.ToList().ForEach(x =>
+            catch (Exception ex)
             {
-                Console.WriteLine(x.Gender.ToString());
-
-                x.Pets.ToList().ForEach(p => Console.WriteLine($"\t{p.Name}"));
-            });
-
-            Console.WriteLine(Environment.NewLine);
-
-            Print();
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(Environment.NewLine);
+                Console.WriteLine("Shutting down...");
+            }            
         }
 
         static string GetRepeatedString(string toRepeat, int noOfTimes)
@@ -62,14 +71,19 @@ namespace NAB.PetStore
             return string.Concat(Enumerable.Repeat("*", noOfTimes));
         }
 
+        static void PrintHeader()
+        {
+            Console.WriteLine(GetRepeatedString("*", 34));
+            Console.WriteLine($"{GetRepeatedString("*", 5)}     NAB Pet Store!     {GetRepeatedString("*", 5)}");
+            Console.WriteLine(GetRepeatedString("*", 34));
+            Console.WriteLine(Environment.NewLine);
+        }
+
         static void Main(string[] args)
         {           
             try
             {
-                Console.WriteLine(GetRepeatedString("*", 34));
-                Console.WriteLine($"{GetRepeatedString("*", 5)}     NAB Pet Store!     {GetRepeatedString("*", 5)}");
-                Console.WriteLine(GetRepeatedString("*", 34));
-                Console.WriteLine(Environment.NewLine);
+                PrintHeader();
 
                 serviceProvider = AddDependencyInjection();
 
@@ -79,8 +93,7 @@ namespace NAB.PetStore
             {
                 Console.WriteLine(ex.Message);
                 Console.WriteLine(Environment.NewLine);
-
-                Print();
+                Console.WriteLine("Shutting down...");
             }
         }
     }
