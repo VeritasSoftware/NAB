@@ -28,19 +28,20 @@ namespace NAB.PetStore.Repository
         /// <returns><see cref="Task{PetsByPersonGenderCollection}"/></returns>
         public async Task<PetsByPersonGenderCollection> GetPetsByPersonGender(PetType petType)
         {
-            var petStore = await _petStoreRepository.GetPetStore();
+            var petStore = await _petStoreRepository.GetPetStoreAsync();
 
             //LINQ Query to get Pets by Person's gender and Pet type
             return new PetsByPersonGenderCollection()
             {
                 PetsByPersonGender = petStore.ToList()
-                                             .Where(person => person.pets != null)
-                                             .GroupBy(person => person.gender)
+                                             .Where(person => person.Pets != null)
+                                             .GroupBy(person => person.Gender)
                                              .Select(g => new PetsByPersonGender
                                              {
                                                  Gender = g.Key,
-                                                 Pets = g.SelectMany(person => person.pets.Where(pet => pet.type == petType))
-                                             }).ToList()
+                                                 Pets = g.SelectMany(person => person.Pets.Where(pet => pet.Type == petType)).OrderBy(x => x.Name)
+                                             })
+                                             .ToList()
             };
         }
     }

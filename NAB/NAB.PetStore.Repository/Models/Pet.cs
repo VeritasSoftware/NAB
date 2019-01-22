@@ -1,8 +1,12 @@
-﻿namespace NAB.PetStore.Repository
+﻿using Newtonsoft.Json;
+
+namespace NAB.PetStore.Repository
 {   
     public class Pet
     {
-        public string name { get; set; }
-        public PetType type { get; set; }
+        [JsonProperty("name")]
+        public string Name { get; set; }
+        [JsonProperty("type")]
+        public PetType Type { get; set; }
     }
 }

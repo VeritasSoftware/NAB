@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace NAB.PetStore.Repository
 {
@@ -7,9 +8,13 @@ namespace NAB.PetStore.Repository
     /// </summary>
     public class Person
     {
-        public string name { get; set; }
-        public Gender gender { get; set; }
-        public int age { get; set; }
-        public ICollection<Pet> pets { get; set; }
+        [JsonProperty("name")]
+        public string Name { get; set; }
+        [JsonProperty("gender")]
+        public Gender Gender { get; set; }
+        [JsonProperty("age")]
+        public int Age { get; set; }
+        [JsonProperty("pets")]
+        public ICollection<Pet> Pets { get; set; }
     }
 }

@@ -7,6 +7,6 @@ namespace NAB.PetStore.Repository
     /// </summary>
     public interface IPetStoreRepository
     {
-        Task<Person[]> GetPetStore();
+        Task<Person[]> GetPetStoreAsync();
     }
 }

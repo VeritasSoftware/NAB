@@ -12,7 +12,7 @@ namespace NAB.PetStore.Repository
     {
         public string Path { get; set; }       
 
-        public async Task<Person[]> GetPetStore()
+        public async Task<Person[]> GetPetStoreAsync()
         {
             if (string.IsNullOrEmpty(this.Path))
             {
