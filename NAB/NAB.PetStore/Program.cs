@@ -40,7 +40,7 @@ namespace NAB.PetStore
 
             var results = petStoreManager.GetPetsByPersonGender(petType).Result;
 
-            results.PetsByPersonGender.ToList().ForEach(x =>
+            results?.PetsByPersonGender.ToList().ForEach(x =>
             {
                 Console.WriteLine(x.Gender.ToString());
 
