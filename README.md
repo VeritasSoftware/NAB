@@ -19,7 +19,7 @@ I have built a .Net Core Console app for the test.
 | ---- | ---- |
 | GetPetStoreAsync | Reads the Pet.json text file and deserializes to object (using **Newtonsoft.Json** library). |
 
-## **IPetStoreMananger** interface - Business logic
+## **IPetStoreManager** interface - Business logic
 
 | API | Description |
 | ---- | ---- |
