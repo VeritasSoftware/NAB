@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Threading.Tasks;
 
-namespace NAB.PetStore.Repository.Interfaces
+namespace NAB.PetStore.Repository
 {
     public interface IPetStoreManager
     {
-
+        Task<PetsByPersonGenderCollection> GetPetsByPersonGender(PetType petType);
     }
 }
