@@ -26,5 +26,9 @@ I have built a .Net Core Console app for the test.
 | GetPetsByPersonGender | Runs a **LINQ query** to perform the business logic. |
 
 
+## Screenshot
+
+![Screenshot](https://github.com/VeritasSoftware/NAB/blob/master/UI.jpg)
+
 
 
