@@ -1,6 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using NAB.PetStore.Repository;
 using System;
+using System.IO;
 using System.Linq;
 
 namespace NAB.PetStore
@@ -17,7 +19,17 @@ namespace NAB.PetStore
         {
             var services = new ServiceCollection();
 
-            return services.AddScoped<IPetStoreRepository, PetStoreRepository>(x => new PetStoreRepository() { Path = "./Pet.json" })
+            var settings = new Settings();
+
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+
+            IConfigurationRoot configuration = builder.Build();
+
+            configuration.Bind(settings);
+
+            return services.AddScoped<IPetStoreRepository, PetStoreRepository>(x => new PetStoreRepository() { Path = settings.PetStoreFilePath })
                            .AddScoped<IPetStoreManager, PetStoreManager>()
                            .BuildServiceProvider();
                     
